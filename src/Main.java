@@ -20,7 +20,13 @@ public class Main {
     *@return ArrayList of ints that indicates the number of runs
      */
     private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir){
+        ArrayList<Integer> = arrayListCreate(pList.size(), 0);
+        int i = 0;
+        int k = 0;
+        do{
+            
 
+        } while(i < pList.size());
     }
     /*
     * merges two lists containing the RUNS_UP and RUNS_DN count
@@ -39,7 +45,11 @@ public class Main {
     * @return an arraylist with requested values
      */
     private ArrayList<Integer> arrayListCreate(int pSize, int pInitValue){
-
+        ArrayList<Integer> newList = new ArrayList<>();
+        for (int i = 0; i < pSize; i++) {
+            newList.add(pInitValue);
+        }
+        return newList;
     }
 
     /*
