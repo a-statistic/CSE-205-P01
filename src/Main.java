@@ -12,7 +12,7 @@ public class Main {
 
     }
     private void run(){
-
+        ArrayList<Integer> list = 
     }
     /*
     * finds the number of RUNS_UP and RUNS_DN in a given list of Integers
@@ -37,7 +37,11 @@ public class Main {
     * @return a single ArrayList<Integer> containing both RUNS_UP and RUNS_DOWN counts
      */
     private ArrayList<Integer> mergeLists(ArrayList<Integer> pListRunsUpCount, ArrayList<Integer> pListRunsDownCount) {
-
+        ArrayList<Integer> listRunsCount = arrayListCreate(pListRunsUpCount.size(), 0);
+        for (int i = 0; i < pListRunsUpCount.size()-1; i++) {
+            listRunsCount.set(i, (pListRunsUpCount.get(i) + pListRunsDownCount.get(i)));
+        }
+        return listRunsCount
     }
 
     /*
