@@ -69,7 +69,7 @@ public class Main {
         out.close();
 
     }
-    
+
     /*
     *sums all the integers in an ArrayList<Integer>
     *@param pList an ArrayList<Integer> to be summed
