@@ -32,7 +32,36 @@ public class Main {
         int i = 0;
         int k = 0;
         do{
-            i = pList.size(); //no idea how to implement this code, this is to make it work so I can continue the rest of the program.
+            
+     //Runs initial check in the Runs up direction by setting pDir to the appropriate value. Then we count how many numbers in a row count up until we hit one that goes down.
+     //Once this occurs we cancel the sequence while still incrementing the i value and adding one to the count in the appropriate ArrayList index for counting up. 
+     //Once the list has been run through counting up we will then run again in the opposite direction.       
+ 
+            
+            pDir = RUNS_UP;  
+            if pList.get(i)<pList.get(i+1) 
+            {
+                k++
+                i++
+                  
+                for (i; pDir=1 && i< pList.size();i++)     
+                     {
+                         for (i;pList.get(i)<pList.get(i+1);i++)
+                             {
+                              k++
+                                  
+                             }   
+                          
+                                listRunsUpCount.set(k)++;
+                                k=0
+                                 
+                     }    
+        //if the number is counting down we add 1 and compare again                      
+                else
+                              {
+                               i++
+                               }    
+            /*i = pList.size(); //no idea how to implement this code, this is to make it work so I can continue the rest of the program.*/
 
         } while(i < pList.size());
         return runs;
