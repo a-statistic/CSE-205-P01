@@ -1,18 +1,25 @@
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Main {
+    private final int RUNS_UP = 1;
+    private final int RUNSDN = -1;
 
     public static void main(String[] args){
         Main mainObject = new Main();
 
     }
-    private void run(){
-        ArrayList<Integer> list = 
+    private void run() throws FileNotFoundException {
+        ArrayList<Integer> list = new ArrayList<>();
+        readInputFile("input.txt", list); // file name is a placeholder for now
+        ArrayList<Integer> listRunsUpCount = new ArrayList<>();
+        ArrayList<Integer> listRunsDnCount = new ArrayList<>();
+
     }
     /*
     * finds the number of RUNS_UP and RUNS_DN in a given list of Integers
@@ -41,7 +48,7 @@ public class Main {
         for (int i = 0; i < pListRunsUpCount.size()-1; i++) {
             listRunsCount.set(i, (pListRunsUpCount.get(i) + pListRunsDownCount.get(i)));
         }
-        return listRunsCount
+        return listRunsCount;
     }
 
     /*
