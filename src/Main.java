@@ -59,7 +59,7 @@ public class Main {
                
                 }
               i++;  
-            System.out.println("Good TO go");
+            
         }while(i < pList.size()-1);
         if (k !=0){
           int value2 = listRunsCount.get(k);
@@ -153,10 +153,7 @@ public class Main {
             System.out.println("File not found: " + e.getMessage());
 
         }
-for (int x=0;x<list.size();x++)
-            {
-                System.out.print(list.get(x));
-            }
+
         return list;
 
     }
