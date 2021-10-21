@@ -1,3 +1,9 @@
+package P01;
+
+/**
+ *
+ * @author rSaucier
+ */
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -15,8 +21,10 @@ public class Main {
 
     }
     private void run() {
-        ArrayList<Integer> list = readInputFile("/Documents/CSE205/cse-205/input/p01-in.txt");
-        ArrayList<Integer> listRunsUpCount = findRuns(list, RUNS_UP);
+        ArrayList<Integer> list = readInputFile("p01-in.txt");
+      
+      
+       ArrayList<Integer> listRunsUpCount = findRuns(list, RUNS_UP);
         ArrayList<Integer> listRunsDnCount = findRuns(list, RUNS_DN);
         ArrayList<Integer> listRunsCount = mergeLists(listRunsUpCount, listRunsDnCount);
         writeOutputFile("p01-runs.txt", listRunsCount);
@@ -39,16 +47,20 @@ public class Main {
                 else if (pDir == RUNS_DN && pList.get(i) >= pList.get(i+1)){
                     k++;
                 }
-                else {
-                    if (k != 0) {
+                else 
+                {
+                    if (k != 0) 
+                    {
                         int value1 = listRunsCount.get(k);
                         value1++;
                         listRunsCount.set(k, value1);
+                        k=0;
                     }
+               
                 }
-                i++;
-            }
-        } while(i < pList.size());
+              i++;  
+            System.out.println("Good TO go");
+        }while(i < pList.size()-1);
         if (k !=0){
           int value2 = listRunsCount.get(k);
           value2++;
@@ -132,13 +144,19 @@ public class Main {
         try (Scanner read = new Scanner(in)){
 
             while (read.hasNextInt()) {
+                
                 list.add(read.nextInt());
+            
             }
+            
         } catch (FileNotFoundException e){
             System.out.println("File not found: " + e.getMessage());
 
         }
-
+for (int x=0;x<list.size();x++)
+            {
+                System.out.print(list.get(x));
+            }
         return list;
 
     }
