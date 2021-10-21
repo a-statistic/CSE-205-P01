@@ -33,8 +33,6 @@ public class Main {
         int i = 0;
         int k = 0;
         do{
-            while (i < pList.size()-1) {
-
                 if (pDir == RUNS_UP && pList.get(i) <= pList.get(i+1)) {
                     k++;
                 }
