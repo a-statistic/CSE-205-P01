@@ -1,24 +1,25 @@
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Main {
     private final int RUNS_UP = 1;
-    private final int RUNSDN = -1;
+    private final int RUNS_DN = -1;
 
-    public static void main(String[] args){
+    public static void main(String[] args)  {
         Main mainObject = new Main();
+        mainObject.run();
 
     }
-    private void run() throws FileNotFoundException {
-        ArrayList<Integer> list = new ArrayList<>();
-        readInputFile("input.txt", list); // file name is a placeholder for now
-        ArrayList<Integer> listRunsUpCount = new ArrayList<>();
-        ArrayList<Integer> listRunsDnCount = new ArrayList<>();
+    private void run() {
+        ArrayList<Integer> list = readInputFile("/Documents/CSE205/cse-205/input/p01-in.txt");
+        ArrayList<Integer> listRunsUpCount = findRuns(list, RUNS_UP);
+        ArrayList<Integer> listRunsDnCount = findRuns(list, RUNS_DN);
+        ArrayList<Integer> listRunsCount = mergeLists(listRunsUpCount, listRunsDnCount);
+        writeOutputFile("p01-runs.txt", listRunsCount);
 
     }
     /*
@@ -28,14 +29,34 @@ public class Main {
     *@return ArrayList of ints that indicates the number of runs
      */
     private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir){
-        ArrayList<Integer> runs = arrayListCreate(pList.size(), 0);
+        ArrayList<Integer> listRunsCount = arrayListCreate(pList.size(), 0);
         int i = 0;
         int k = 0;
         do{
-            i = pList.size(); //no idea how to implement this code, this is to make it work so I can continue the rest of the program.
+            while (i < pList.size()-1) {
 
+                if (pDir == RUNS_UP && pList.get(i) <= pList.get(i+1)) {
+                    k++;
+                }
+                else if (pDir == RUNS_DN && pList.get(i) >= pList.get(i+1)){
+                    k++;
+                }
+                else {
+                    if (k != 0) {
+                        int value1 = listRunsCount.get(k);
+                        value1++;
+                        listRunsCount.set(k, value1);
+                    }
+                }
+                i++;
+            }
         } while(i < pList.size());
-        return runs;
+        if (k !=0){
+          int value2 = listRunsCount.get(k);
+          value2++;
+          listRunsCount.set(k, value2);
+        }
+        return listRunsCount;
     }
     /*
     * merges two lists containing the RUNS_UP and RUNS_DN count
@@ -70,13 +91,19 @@ public class Main {
     * @param pFilename name of file to be written to
     * @param pListRuns the merged list of RUNS_UP and RUNS_down information to be written
      */
-    private void writeOutputFile(String pFileName, ArrayList<Integer> pListRuns) throws IOException {
-        PrintWriter out = new PrintWriter(pFileName);
-        int runsTotal = sumArray(pListRuns);
-        out.println("runs_total: " + runsTotal);
-        for(int k = 0; k < pListRuns.size(); k++) {
-            out.println("runs_" + k + ": " + pListRuns.get(k));
+    private void writeOutputFile(String pFileName, ArrayList<Integer> pListRuns)  {
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(pFileName);
+            int runsTotal = sumArray(pListRuns);
+            out.println("runs_total: " + runsTotal);
+            for(int k = 0; k < pListRuns.size(); k++) {
+                out.println("runs_" + k + ": " + pListRuns.get(k));
+            }
+        } catch(IOException e){
+            System.out.println("An error occured: " + e.getMessage());
         }
+
         out.close();
 
     }
@@ -100,14 +127,20 @@ public class Main {
     * @param pListRuns a list that will record the RUNS data
     * @return an ArrayList<Integer> with the RUNS data
      */
-    private ArrayList<Integer> readInputFile(String pFileName, ArrayList<Integer>  pListRuns) throws FileNotFoundException {
+    private ArrayList<Integer> readInputFile(String pFileName) {
         File in = new File(pFileName);
         ArrayList<Integer> list = new ArrayList<>();
-        Scanner read = new Scanner(in);
-        while (read.hasNextInt()) {
-            list.add(read.nextInt());
+
+        try (Scanner read = new Scanner(in)){
+
+            while (read.hasNextInt()) {
+                list.add(read.nextInt());
+            }
+        } catch (FileNotFoundException e){
+            System.out.println("File not found: " + e.getMessage());
+
         }
-        read.close();
+
         return list;
 
     }
