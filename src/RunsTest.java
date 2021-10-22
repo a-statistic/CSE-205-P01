@@ -19,7 +19,7 @@ public class RunsTest {
         ArrayList<Integer> listRunsCount = arrayListCreate(pList.size(), 0);
         int i = 0;
         int k = 0;
-        do{
+        while(i < pList.size() - 1){
             if (pDir == RUNS_UP && pList.get(i) <= pList.get(i+1)) {
                 k++;
             }
@@ -39,7 +39,7 @@ public class RunsTest {
             }
             i++;
 
-        }while(i < pList.size()-1);
+        }
         if (k !=0){
             int value2 = listRunsCount.get(k);
             value2++;
@@ -55,7 +55,7 @@ public class RunsTest {
      */
     public static ArrayList<Integer> mergeLists(ArrayList<Integer> pListRunsUpCount, ArrayList<Integer> pListRunsDownCount) {
         ArrayList<Integer> listRunsCount = arrayListCreate(pListRunsUpCount.size(), 0);
-        for (int i = 0; i < pListRunsUpCount.size()-1; i++) {
+        for (int i = 0; i < pListRunsUpCount.size(); i++) {
             listRunsCount.set(i, (pListRunsUpCount.get(i) + pListRunsDownCount.get(i)));
         }
         return listRunsCount;
@@ -86,7 +86,7 @@ public class RunsTest {
             out = new PrintWriter(pFileName);
             int runsTotal = sumArray(pListRuns);
             out.println("runs_total: " + runsTotal);
-            for(int k = 0; k < pListRuns.size(); k++) {
+            for(int k = 1; k < pListRuns.size(); k++) {
                 out.println("runs_" + k + ": " + pListRuns.get(k));
             }
         } catch(IOException e){

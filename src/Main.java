@@ -15,8 +15,7 @@ public class Main {
 
     }
     private void run() {
-        ArrayList<Integer> list = RunsTest.readInputFile("/Users/a_statistic/IdeaProjects/CSE-205-P01/p01-in.txt");
-        System.out.println(list);
+        ArrayList<Integer> list = RunsTest.readInputFile("p01-in.txt");
         ArrayList<Integer> listRunsUpCount = RunsTest.findRuns(list, 1);
         ArrayList<Integer> listRunsDnCount = RunsTest.findRuns(list, -1);
         ArrayList<Integer> listRunsCount = RunsTest.mergeLists(listRunsUpCount, listRunsDnCount);
