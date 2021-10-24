@@ -1,3 +1,11 @@
+/**
+ *CLASS: RunsTest
+ * AUTHOR(S): William McWhorter, wtmcwhor, wtmcwhor@asu.edu
+ *            Joseph Daugherty, jdaughe2, jdaughe2@asu.edu
+ *            Keana Gindlesperger
+ *            Randy Saucier
+ *
+ */
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.IOException;
